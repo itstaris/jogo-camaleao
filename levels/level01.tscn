@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3e2n3bocestn"]
+[gd_scene load_steps=11 format=3 uid="uid://d3e2n3bocestn"]
 
+[ext_resource type="Script" path="res://scripts/world_01.gd" id="1_8ssnh"]
 [ext_resource type="PackedScene" uid="uid://bow11y6aj1i3h" path="res://actors/player.tscn" id="1_p78uc"]
 [ext_resource type="Texture2D" uid="uid://byy0vggxu6mbm" path="res://assets/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.png" id="1_rcyv0"]
 [ext_resource type="Texture2D" uid="uid://cvewo518t6fa" path="res://assets/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" id="2_gr5uc"]
+[ext_resource type="PackedScene" uid="uid://c6eesv0td4kfe" path="res://prefabs/frutinha.tscn" id="4_6w7x5"]
+[ext_resource type="Script" path="res://scripts/hud_manager.gd" id="5_ml2cc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_psaci"]
 texture = ExtResource("1_rcyv0")
@@ -159,7 +162,8 @@ sources/5 = SubResource("TileSetAtlasSource_bl51n")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ugahj"]
 size = Vector2(101.128, 20.5354)
 
-[node name="World" type="Node2D"]
+[node name="world_01" type="Node2D"]
+script = ExtResource("1_8ssnh")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(189, 107)
@@ -171,6 +175,7 @@ layer_1/name = "walls"
 
 [node name="player" parent="." instance=ExtResource("1_p78uc")]
 position = Vector2(189, 107)
+scale = Vector2(3, 3)
 
 [node name="paredes provisórias" type="Node2D" parent="."]
 position = Vector2(-29, 325)
@@ -178,10 +183,8 @@ rotation = -3.14159
 scale = Vector2(0.581602, -31.7028)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="paredes provisórias"]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes provisórias/StaticBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ugahj")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="paredes provisórias"]
@@ -189,7 +192,6 @@ position = Vector2(-2090.78, -0.14151)
 scale = Vector2(0.999999, 0.999999)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes provisórias/StaticBody2D2"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ugahj")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="paredes provisórias"]
@@ -197,7 +199,6 @@ position = Vector2(-1088.37, 10.7408)
 scale = Vector2(20.2179, 0.053233)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes provisórias/StaticBody2D3"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ugahj")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="paredes provisórias"]
@@ -205,8 +206,84 @@ position = Vector2(-1088.37, -11.1185)
 scale = Vector2(20.2179, 0.053233)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="paredes provisórias/StaticBody2D4"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ugahj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 324)
+
+[node name="frutinha" parent="." instance=ExtResource("4_6w7x5")]
+position = Vector2(424, 391)
+scale = Vector2(3, 3)
+collision_layer = 4
+
+[node name="frutinha2" parent="." instance=ExtResource("4_6w7x5")]
+position = Vector2(662, 252)
+scale = Vector2(3, 3)
+collision_layer = 4
+
+[node name="frutinha3" parent="." instance=ExtResource("4_6w7x5")]
+position = Vector2(764, 472)
+scale = Vector2(3, 3)
+collision_layer = 4
+
+[node name="frutinha4" parent="." instance=ExtResource("4_6w7x5")]
+position = Vector2(830, 267)
+scale = Vector2(3, 3)
+collision_layer = 4
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_ml2cc")
+
+[node name="clock_timer" type="Timer" parent="HUD/control"]
+
+[node name="container" type="MarginContainer" parent="HUD/control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="score_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="score_label" type="Label" parent="HUD/control/container/score_container"]
+layout_mode = 2
+text = "PONTUAÇÃO"
+vertical_alignment = 1
+
+[node name="score_counter" type="Label" parent="HUD/control/container/score_container"]
+layout_mode = 2
+text = "00000"
+vertical_alignment = 1
+
+[node name="timer_container" type="HBoxContainer" parent="HUD/control/container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="timer_label" type="Label" parent="HUD/control/container/timer_container"]
+layout_mode = 2
+text = "TEMPO"
+vertical_alignment = 1
+
+[node name="timer_counter" type="Label" parent="HUD/control/container/timer_container"]
+layout_mode = 2
+text = "00:00"
+vertical_alignment = 1
+
+[connection signal="timeout" from="HUD/control/clock_timer" to="HUD/control" method="_on_clock_timer_timeout"]

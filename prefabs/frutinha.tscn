@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6eesv0td4kfe"]
+
+[ext_resource type="Script" path="res://scripts/frutinha.gd" id="1_2c8xi"]
+[ext_resource type="Texture2D" uid="uid://d3uupl3qji8oo" path="res://assets/Sprout Lands - Sprites - Basic pack/Objects/Egg_item.png" id="1_ftln1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i1rnk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_45vaa"]
+radius = 8.0
+
+[node name="frutinha" type="Area2D"]
+script = ExtResource("1_2c8xi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_i1rnk")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_45vaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ftln1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
