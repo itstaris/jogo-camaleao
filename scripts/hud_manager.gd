@@ -18,8 +18,11 @@ func _ready():
 func _process(delta: float) -> void:
 	score_counter.text = str("%05d" % Globals.score)
 	seconds += delta
+	timer_counter.text = str("%02d" % minutes) + ":" + str("%02d" % seconds)
+	
 	if seconds > 59:
 		minutes += 1
+		seconds = default_seconds
 		timer_counter.text = str("%02d" % minutes) + ":" + str("%02d" % default_seconds)
 func reset_clock_timer():
 	minutes = default_minutes
