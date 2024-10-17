@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgln5pmhpk53"
-path="res://.godot/imported/Snake_spritesheet.png-3a99d4d9370d768e99c65c938947d226.ctex"
+uid="uid://bj7ens2of25s1"
+path="res://.godot/imported/tilemap prisma.png-03165507c216ab5aba03a90d3612dbd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://singletons/Snake_spritesheet.png"
-dest_files=["res://.godot/imported/Snake_spritesheet.png-3a99d4d9370d768e99c65c938947d226.ctex"]
+source_file="res://assets/tilemap prisma.png"
+dest_files=["res://.godot/imported/tilemap prisma.png-03165507c216ab5aba03a90d3612dbd3.ctex"]
 
 [params]
 

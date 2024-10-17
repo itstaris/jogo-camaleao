@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://xeo1h6a31fhl"]
+
+[ext_resource type="Script" path="res://actors/playertest.gd" id="1_l1p4f"]
+[ext_resource type="Texture2D" uid="uid://cocuw0dgr1bgp" path="res://assets/1000031990_scaled_3x_pngcrushed (1).png" id="2_m37af"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ft5uv"]
+texture = ExtResource("2_m37af")
+0:0/size_in_atlas = Vector2i(3, 3)
+0:0/0 = 0
+3:0/size_in_atlas = Vector2i(3, 3)
+3:0/0 = 0
+6:0/size_in_atlas = Vector2i(3, 3)
+6:0/0 = 0
+9:0/size_in_atlas = Vector2i(3, 3)
+9:0/0 = 0
+12:0/size_in_atlas = Vector2i(3, 3)
+12:0/0 = 0
+15:0/size_in_atlas = Vector2i(3, 3)
+15:0/0 = 0
+18:0/size_in_atlas = Vector2i(3, 3)
+18:0/0 = 0
+0:3/size_in_atlas = Vector2i(3, 3)
+0:3/0 = 0
+3:3/size_in_atlas = Vector2i(3, 3)
+3:3/0 = 0
+6:3/size_in_atlas = Vector2i(3, 3)
+6:3/0 = 0
+9:3/size_in_atlas = Vector2i(3, 3)
+9:3/0 = 0
+12:3/size_in_atlas = Vector2i(3, 3)
+12:3/0 = 0
+15:3/size_in_atlas = Vector2i(3, 3)
+15:3/0 = 0
+18:3/size_in_atlas = Vector2i(3, 3)
+18:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kv5pg"]
+tile_size = Vector2i(48, 48)
+sources/3 = SubResource("TileSetAtlasSource_ft5uv")
+
+[node name="Node" type="Node"]
+script = ExtResource("1_l1p4f")
+
+[node name="prisma" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_kv5pg")
+rendering_quadrant_size = 48
+format = 2
