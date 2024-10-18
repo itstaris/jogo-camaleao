@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 2
+const SPEED = 300
 	
 func _physics_process(_delta):
 
